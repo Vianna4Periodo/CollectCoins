@@ -1,4 +1,4 @@
-var HomeState = {
+var EndState = {
     
     init: function () {
         this.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
