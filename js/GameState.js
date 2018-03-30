@@ -7,21 +7,37 @@ var GameState = {
     },
 
     preload: function () {
-        // this.load.image('background','assets/images/background.png');
-        // this.load.image('arrow','assets/images/arrow.png');
-
-        // this.load.spritesheet('chicken', 'assets/images/chicken_spritesheet.png', 131, 200, 3);
-        // this.load.spritesheet('horse', 'assets/images/horse_spritesheet.png', 212, 200, 3);
-        // this.load.spritesheet('pig', 'assets/images/pig_spritesheet.png', 297, 200, 3);
-        // this.load.spritesheet('sheep', 'assets/images/sheep_spritesheet.png', 244, 200, 3);
-
-        // this.load.audio('chickenSound', ['assets/audio/chicken.mp3', 'assets/audio/chicken.ogg']);
-        // this.load.audio('horseSound', ['assets/audio/horse.mp3', 'assets/audio/horse.ogg']);
-        // this.load.audio('pigSound', ['assets/audio/pig.mp3', 'assets/audio/pig.ogg']);
-        // this.load.audio('sheepSound', ['assets/audio/sheep.mp3', 'assets/audio/sheep.ogg']);
+        // Sprites
+        this.load.spritesheet('coin', 'assets/images/coin_spritesheet.png', 128, 128, 21);
+        
+        // Sounds
+        this.load.audio("start", ["assets/audio/start.mp4"]);
+        this.load.audio("end", ["assets/audio/end.mp4"]);
+        this.load.audio("tap", ["assets/audio/tap.mp4"]);
     },
 
     create: function () {
+        var coinsData = [];
+
+        for (let index = 0; index < 9; index++) {
+            coinsData.push({ key: "coin", value: 10, position: this.randomPosition() });
+        };
+
+        this.coins = this.game.add.group();
+
+        let self = this;
+
+        coinsData.forEach(function (element) {
+            coin = self.coins.create(element.position.x, element.position.y, element.key);
+            coin.animations.add('animate', [0, 1, 2, 3, 4, 5, 6, 7, 8, 9 ,10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20], 24, true);
+            coin.customParams = { value: element.value };
+            coin.anchor.setTo(0.5);
+            coin.scale.setTo(0.2);
+            coin.inputEnabled = true;
+            coin.input.pixelPerfectClick = true;
+            coin.play("animate");
+        });
+
         // this.background = this.game.add.sprite(0, 0, 'background');
 
         // var animalData = [
@@ -32,6 +48,8 @@ var GameState = {
         // ];
 
         // this.animals = this.game.add.group();
+
+
 
         // var self = this;
 
@@ -128,5 +146,12 @@ var GameState = {
         // currentAnimalMoviment.start();
 
         // this.currentAnimal = newAnimal;
+    },
+
+    randomPosition: function() {
+        let valueX = Math.floor(Math.random() * this.game.width);
+        let valueY = Math.floor(Math.random() * this.game.height);
+        return { x: valueX, y: valueY };
     }
+
 };

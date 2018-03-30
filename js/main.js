@@ -6,4 +6,4 @@ game.state.add('EndState', EndState);
 game.state.add('HomeState', HomeState);
 game.state.add('GameState', GameState);
 
-game.state.start('HomeState');
+game.state.start('GameState');
