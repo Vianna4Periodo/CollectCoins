@@ -18,7 +18,7 @@ var EndState = {
             wordWrapWidth: 450
         };
 
-        this.endText = this.game.add.text(this.game.world.centerX, this.game.world.centerY, "Fim de jogo, toque na tela para jogar novamente.", style);
+        this.endText = this.game.add.text(this.game.world.centerX, this.game.world.centerY, "Para jogar novamente, clique na tela.", style);
         this.endText.anchor.setTo(0.5);
 
         this.game.input.onDown.add(this.restart, this);
