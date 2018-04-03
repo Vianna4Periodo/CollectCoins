@@ -8,7 +8,7 @@ var GameState = {
 
     preload: function () {
         this.load.spritesheet('moeda', 'assets/images/moeda_spritesheet.png', 100, 100, 10);
-        this.load.audio("pegarSound", ["assets/audio/tap.m4a"]);
+        this.load.audio("coinSound", ['assets/audio/tap.m4a']);
     },
 
     create: function () {
@@ -20,7 +20,7 @@ var GameState = {
             let position = self.randomPosition();
             var moeda = self.game.add.sprite(position.x, position.y, "moeda");
             moeda.animations.add('animate', [0, 1, 2, 3, 4, 5, 6, 7, 8, 9], 12, true);
-            moeda.customParams = { ponto: 10, sound: self.game.add.audio("pegarSound") };
+            moeda.customParams = { ponto: 10, sound: self.game.add.audio("coinSound") };
             moeda.anchor.setTo(0.5);
             moeda.scale.setTo(0.5);
             moeda.inputEnabled = true;

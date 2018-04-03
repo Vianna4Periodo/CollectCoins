@@ -7,9 +7,12 @@ var EndState = {
     },
 
     preload: function () {
+        this.load.audio("winSound", ['assets/audio/win.m4a', 'assets/audio/win.ogg']);
     },
 
     create: function () {
+        var som =  game.add.audio('winSound', 1, true, true);
+        som.play();
         var style = {
             font: 'bold 10pt Arial', 
             fill: 'white', 
@@ -18,8 +21,8 @@ var EndState = {
             wordWrapWidth: 450
         };
 
-        this.endText = this.game.add.text(this.game.world.centerX, this.game.world.centerY, "Para jogar novamente, clique na tela.", style);
-        this.endText.anchor.setTo(0.5);
+        this.endText = this.game.add.text(this.game.world.centerX, this.game.world.centerY, "Jogar de novo", style);
+        this.endText.anchor.setTo(0.5, 0.9);
 
         this.game.input.onDown.add(this.restart, this);
     },
